@@ -1,0 +1,42 @@
+=meta: 0.0.2
+
+name: Test-More-YAMLScript
+version: 0.0.12
+abstract: Write Perl tests in YAMLScript
+homepage: https://yamlscript.org
+license: perl
+copyright: 2022
+language: perl
+
+author:
+  name: Ingy döt Net
+  email: ingy@ingy.net
+  github: ingydotnet
+  twitter: ingydotnet
+  freenode: ingy
+  homepage: http://ingy.net
+  cpan: INGY
+
+devel:
+  git: https://github.com/ingydotnet/test-more-yamlscript-pm
+  bug: https://github.com/ingydotnet/test-more-yamlscript-pm/issues
+  irc: irc.libera.chat#yamlscript
+
+branch: main
+
+requires:
+  perl: '5.10.1'
+  Test::Simple: '1.302191'
+  YAMLScript: '0.12'
+
+=zild:
+  no-readme: true
+  no-travis: true
+
+  dzil:
+    no-mm: true
+    postamble: |
+      [MakeMaker::Awesome]
+      delimiter = |
+      footer = |package MY; use lib 't/lib'; use DistTestFixer;
+      footer = |sub postamble { $_[0]->SUPER::postamble . DistTestFixer->fix }

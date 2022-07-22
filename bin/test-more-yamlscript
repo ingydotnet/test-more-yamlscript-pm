@@ -1,0 +1,26 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use YAMLScript;
+
+use XXX;
+
+my $file = shift;
+
+my $ys = YAMLScript->new(
+    file => $file,
+);
+
+$_ = $ys->yaml;
+
+if (not(/^(use|main\()/m) and /^- \w/m) {
+    s{^- }
+     {use: YS-TestMore\n\nmain():\n- }m
+        or die $_;
+}
+
+$ys->yaml($_);
+
+$ys->run;

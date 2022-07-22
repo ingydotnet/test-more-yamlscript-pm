@@ -1,0 +1,6 @@
+# Revision history for Perl module Test::More::YAMLScript
+---
+version: 0.0.1
+date:    Fri 22 Jul 2022 12:56:17 PM PDT
+changes:
+- Initial release
