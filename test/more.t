@@ -1,11 +1,6 @@
 #!/usr/bin/env test-more-yamlscript
 
-- plan: 8
-
-# TODO
-# - if:
-#   - (==): [$sys/env:OSNAME, Plan9]
-#   - skip-all: 9 is not my Plan
+- plan: 10
 
 - pass: This test will always 'pass'
 
@@ -45,20 +40,20 @@
   - Skipping - Highway to the danger zone
   - danger: zone
 
-# TODO
-# - subtest:
-#   - Testing subtests:
-#   - do:
-#     - plan: 3
-#     - for:
-#       - [1, 2, 3]
-#       - pass: Subtest $_
+- subtest:
+  - Testing skip-all in subtest
+  - skip-all: Skipping all these subtests
+  - pass: I wanna pass...
+  - fail: Gonna fail...
 
-# - subtest:
-#   - Testing skip-all in subtest
-#   - do:
-#     - skip-all: Skipping all these subtests
-#     - pass: I wanna pass...
-#     - pass: I wanna pass two...
+- subtest:
+  - Testing 'subtests'
+  - for:
+    - [1, 2, 3]
+    - pass: Subtest $_
+  - done-testing: 3
 
-# - done-testing: 8
+# - is_deeply:
+#   - { "key": val }
+#   - { "key": val }
+#   - Testing 'is_deeply'

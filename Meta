@@ -26,8 +26,11 @@ branch: main
 
 requires:
   perl: '5.10.1'
+  Mo: '0.40'
+  Mo::xxx: '0.13'
   Test::Simple: '1.302191'
-  YAMLScript: '0.12'
+  XXX: '0.38'
+  YAMLScript: '0.0.12'
 
 =zild:
   no-readme: true

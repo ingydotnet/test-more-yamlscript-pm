@@ -9,7 +9,7 @@ A file `t/test.t`:
 ```
 #!/usr/bin/env test-more-yamlscript
 
-- plan: 8
+- plan: 10
 
 - pass: This test will always 'pass'
 
@@ -48,25 +48,47 @@ A file `t/test.t`:
 - skip:
   - Skipping - Highway to the danger zone
   - danger: zone
+
+- subtest:
+  - Testing skip-all in subtest
+  - skip-all: Skipping all these subtests
+  - pass: I wanna pass...
+  - fail: Gonna fail...
+
+- subtest:
+  - Testing 'subtests'
+  - for:
+    - [1, 2, 3]
+    - pass: Subtest $_
+  - done-testing: 3
 ```
 
 Run `prove t/test.t`:
 ```
-test/test.t ..
-1..8
+test/more.t .. 
+1..10
 ok 1 - This test will always 'pass'
 not ok 2 # TODO & SKIP Testing 'todo'
 # NOTE: This is awesome
 ok 3 - Testing 'ok'
-# This is a WARNING!
 ok 4 - 2 + 2 'is' 4
+# This is a WARNING!
 ok 5 - 2 + 2 'isnt' 5
 ok 6 - Testing 'like'
 ok 7 - Testing 'unlike'
 ok 8 # skip Skipping - Highway to the danger zone
+# Subtest: Testing skip-all in subtest
+    1..0 # SKIP Skipping all these subtests
+ok 9 # skip Skipping all these subtests
+# Subtest: Testing 'subtests'
+    ok 1 - Subtest 1
+    ok 2 - Subtest 2
+    ok 3 - Subtest 3
+    1..3
+ok 10 - Testing 'subtests'
 ok
 All tests successful.
-Files=1, Tests=8,  0 wallclock secs ( 0.02 usr  0.01 sys +  0.12 cusr  0.02 csys =  0.17 CPU)
+Files=1, Tests=10,  0 wallclock secs ( 0.01 usr  0.00 sys +  0.10 cusr  0.00 csys =  0.11 CPU)
 Result: PASS
 ```
 
