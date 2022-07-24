@@ -1,5 +1,11 @@
 # Revision history for Perl module Test::More::YAMLScript
 ---
+version: 0.0.3
+date:    Sun 24 Jul 2022 03:15:03 PM PDT
+changes:
+- Use fixed DistTestFixer
+- Add subtest and skip-all support
+---
 version: 0.0.2
 date:    Fri 22 Jul 2022 04:35:44 PM PDT
 changes:
