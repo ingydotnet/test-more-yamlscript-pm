@@ -11,16 +11,9 @@ my $file = shift;
 
 my $ys = YAMLScript->new(
     file => $file,
-    # need => 'YS-TestMore',  # TODO
+    need => ['YS-TestMore'],
 );
 
-# XXX should be automatic in YAMLScript
-$_ = $ys->yaml;
-if (not(/^(use|main\()/m) and /^- \w/m) {
-    s{^- }
-     {use: YS-TestMore\n\nmain():\n- }m
-        or die $_;
-}
-$ys->yaml($_);
+$ys->ensure_main;
 
 $ys->run;
