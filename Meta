@@ -1,11 +1,11 @@
 =meta: 0.0.2
 
 name: Test-More-YAMLScript
-version: 0.0.5
+version: 0.1.0
 abstract: Write Perl tests in YAMLScript
 homepage: https://yamlscript.org
 license: perl
-copyright: 2022
+copyright: 2022-2023
 language: perl
 
 author:
@@ -25,16 +25,15 @@ devel:
 branch: main
 
 requires:
-  perl: '5.10.1'
-  Mo: '0.40'
-  Mo::xxx: '0.13'
+  perl: '5.16.0'
   Test::Simple: '1.302191'
   XXX: '0.38'
-  YAMLScript: '0.0.15'
+  YAMLScript: '0.1.0'
 
 =zild:
   no-readme: true
   no-travis: true
+  test-000: none
 
   dzil:
     no-mm: true

@@ -1,5 +1,10 @@
 # Revision history for Perl module Test::More::YAMLScript
 ---
+version: 0.1.0
+date:    Wed May 17 08:43:30 AM PDT 2023
+changes:
+- Refactor to work over YAMLScript 0.1.0
+---
 version: 0.0.5
 date:    Mon 25 Jul 2022 08:56:17 AM PDT
 changes:
