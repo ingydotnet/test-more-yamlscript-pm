@@ -51,7 +51,7 @@
   - pass: "Subtest 3"
   - done-testing: 3
 
-# # - is_deeply:
-# #   - { "key": val }
-# #   - { "key": val }
-# #   - Testing 'is_deeply'
+# - is_deeply:
+#   - { "key": val }
+#   - { "key": val }
+#   - Testing 'is_deeply'
