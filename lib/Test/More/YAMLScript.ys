@@ -1,75 +1,100 @@
-(ns Test.More.YAMLScript
-  (:use lingy.Util)
-  (:import Test.Builder))
+# ns Test::More::YAMLScript:
+#   use:
+#   - Lingy::Util
+#   import:
+#   - Test::Builder
 
-(def t (.new Test.Builder))
-(.level t 2)
+# ns: Test::More::YAMLScript
+ns: Test.More.YAMLScript
 
-(defn plan [count]
-  (.plan t "tests" count))
+# use: Lingy::Util
+use: \'lingy.Util
 
-(defn pass
-  ([]
-    (.ok t true))
-  ([label]
-    (.ok t true label)))
+# import: Test::Builder
+import: Test.Builder
 
-(defn fail
-  ([]
-    (.ok t nil))
-  ([label]
-    (.ok t nil label)))
+# t =: new(Test::Builder)
+# t .: new(Test::Builder)
+# t =: Test::Builder->new
+t =: .new(Test.Builder)
 
-(defn note [msg]
-  (.note t msg))
+# t .: level(2)
+do: .level(t 2)
 
-(defn diag [msg]
-  (.diag t msg))
+plan(count):
+  .plan(t "tests" count)
 
-(defn ok
-  ([cond]
-    (.ok t cond))
-  ([cond label]
-    (.ok t cond label)))
+do:
 
-(defn is
-  ([got want]
-    (.is_eq t got want))
-  ([got want label]
-    (.is_eq t got want label)))
+# pass(+):
+#   ():
+#     .ok(t true)
+#   (label):
+#     .ok(t true)
+- (defn pass
+    ([]
+      .ok(t true))
+    ([label]
+      .ok(t true label)))
 
-(defn isnt
-  ([got want]
-    (.isnt_eq t got want))
-  ([got want label]
-    (.isnt_eq t got want label)))
+# fail(label=nil):
+#   (t).ok(false, label)
+- (defn fail
+    ([]
+      .ok(t false))
+    ([label]
+      .ok(t false label)))
 
-(defn like
-  ([str rgx]
-    (.like t str rgx))
-  ([str rgx label]
-    (.like t str rgx label)))
+# note(msg): t->note(msg)
+note(msg): .note(t msg)
 
-(defn unlike
-  ([str rgx]
-    (.unlike t str rgx))
-  ([str rgx label]
-    (.unlike t str rgx label)))
+diag(msg): .diag(t msg)
 
-(defmacro todo [label & tests]
-  `(.todo_skip t ~label))
+do:
+- (defn ok
+    ([cond]
+      .ok(t cond))
+    ([cond label]
+      .ok(t cond label)))
 
-(defmacro skip [label & tests]
-  `(.todo_skip t ~label))
+- (defn is
+    ([got want]
+      .is_eq(t got want))
+    ([got want label]
+      .is_eq(t got want label)))
 
-(defn skip-all [label]
-  (.skip_all t label))
+- (defn isnt
+    ([got want]
+      .isnt_eq(t got want))
+    ([got want label]
+      .isnt_eq(t got want label)))
 
-(defmacro subtest [label & tests]
-  `(.subtest Test.More.YAMLScript t ~label '~tests))
+- (defn like
+    ([str rgx]
+      .like(t str rgx))
+    ([str rgx label]
+      .like(t str rgx label)))
 
-(defn done-testing
-  ([]
-    (.done_testing t))
-  ([num]
-    (.done_testing t num)))
+- (defn unlike
+    ([str rgx]
+      .unlike(t str rgx))
+    ([str rgx label]
+      .unlike(t str rgx label)))
+
+- (defmacro todo [label & tests]
+    `(.todo_skip t ~label))
+
+- (defmacro skip [label & tests]
+    `(.todo_skip t ~label))
+
+skip-all(label): .skip_all(t label)
+
+do:
+- (defmacro subtest [label & tests]
+    `(.subtest Test.More.YAMLScript t ~label '~tests))
+
+- (defn done-testing
+    ([]
+      .done_testing(t))
+    ([num]
+      .done_testing(t num)))
