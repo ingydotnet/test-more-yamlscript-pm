@@ -1,5 +1,12 @@
 # Revision history for Perl module Test::More::YAMLScript
 ---
+version: 0.1.1
+date:    Thu May 25 04:24:25 PM PDT 2023
+changes:
+- Rewrite most of the code in Lingy
+- Make Test::More::YAMLScript a YAMLScript file
+- Convert entire module to YAMLScript
+---
 version: 0.1.0
 date:    Wed May 17 08:43:30 AM PDT 2023
 changes:
