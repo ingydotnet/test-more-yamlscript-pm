@@ -4,11 +4,11 @@ use strict;
 use warnings;
 
 use YAMLScript 0.1.0;
-use YAMLScript::RT;
+use YAMLScript::Main;
 
 my $file = shift;
 
-YAMLScript::RT->new->init->rep(qq<
+YAMLScript::Main->new->init->rep(qq<
   (use 'Test.More.YAMLScript)
   (eval (read-file-ys "$file"))
 >);
