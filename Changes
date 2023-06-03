@@ -1,5 +1,12 @@
 # Revision history for Perl module Test::More::YAMLScript
 ---
+version: 0.1.2
+date:    Sat Jun  3 03:30:05 PM PDT 2023
+changes:
+- Make Test::More::YAMLScript::subtest a method
+- Make work with Lingy v0.1.9 and YAMLScript v0.1.4
+- Adjust for recent Lingy refactoring
+---
 version: 0.1.1
 date:    Thu May 25 04:24:25 PM PDT 2023
 changes:
