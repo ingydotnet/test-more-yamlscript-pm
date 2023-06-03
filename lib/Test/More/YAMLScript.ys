@@ -9,7 +9,7 @@ import: Test::Builder       # Use Perl's Test::Builder module
 
 t =: Test::Builder->new()   # Create a singleton Test::Builder object
 
-use: Lingy::Util            # For debugging
+use: lingy.devel            # For debugging
 
 #------------------------------------------------------------------------------
 # All the following functions proxy to Test::Builder methods:
@@ -85,11 +85,12 @@ subtest((label *tests)):
 # XXX - Eval this Perl code until we can figure out a better Perl iterop
 # strategy for callbacks.
 eval-perl: ! |
+  $INC{'Test/More/YAMLScript.pm'} = 1;
   sub Test::More::YAMLScript::subtest {
       my ($t, $label, $exprs) = @_;
       $t->subtest(
           $label,
-          sub { Lingy::Eval::eval($_, $Lingy::Eval::ENV) for @_ },
+          sub { Lingy::Eval::evaluate($_, $Lingy::Eval::ENV) for @_ },
           @$exprs,
       );
   }

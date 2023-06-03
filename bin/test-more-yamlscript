@@ -5,10 +5,12 @@ use warnings;
 
 use YAMLScript 0.1.0;
 use YAMLScript::Main;
+use Lingy::Common;
 
 my $file = shift;
 
-YAMLScript::Main->new->init->rep(qq<
+RT->init;
+RT->rep(qq<
   (use 'Test.More.YAMLScript)
   (eval (read-file-ys "$file"))
 >);
