@@ -87,7 +87,7 @@ subtest((label *tests)):
 eval-perl: ! |
   $INC{'Test/More/YAMLScript.pm'} = 1;
   sub Test::More::YAMLScript::subtest {
-      my ($t, $label, $exprs) = @_;
+      my ($self, $t, $label, $exprs) = @_;
       $t->subtest(
           $label,
           sub { Lingy::Eval::evaluate($_, $Lingy::Eval::ENV) for @_ },
