@@ -59,7 +59,7 @@ perl: ! |
       my ($self, $tb, $label, $exprs) = @_;
       $tb->subtest(
           $label,
-          sub { Lingy::Eval::evaluate($_, $Lingy::Eval::ENV) for @_ },
+          sub { Lingy::Evaluator::evaluate($_, $Lingy::Evaluator::ENV) for @_ },
           @$exprs,
       );
   }
