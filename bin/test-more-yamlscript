@@ -8,8 +8,7 @@ use YAMLScript::RT;
 
 my $file = shift;
 
-RT->init;
-RT->rep(qq<
+RT->init->rep(qq<
   (use 'Test.More.YAMLScript)
   (eval (read-file-ys "$file"))
 >);

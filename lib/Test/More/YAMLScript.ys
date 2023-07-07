@@ -11,44 +11,58 @@ import: Test::Builder       # Use Perl's Test::Builder module
 
 tb =: Test::Builder->new()  # Create a singleton Test::Builder object
 
-call-tb(m, *args): (. lingy.lang.RT applyTo tb m args)
+defn call-tb(m, *args):
+  (. lingy.lang.RT applyTo tb m args)
 
 #------------------------------------------------------------------------------
 # All the following functions proxy to Test::Builder methods:
 #------------------------------------------------------------------------------
 
-plan(count):
+defn plan(count):
   tb->plan("tests", count)
 
-pass(*args): apply(call-tb, 'ok cons(true, args))
+defn pass(*args):
+  apply(call-tb, 'ok, cons(true, args))
 
-fail(*args): apply(call-tb, 'ok cons(false, args))
+defn fail(*args):
+  apply(call-tb, 'ok, cons(false, args))
 
-note(msg): tb->note(msg)
+defn note(msg):
+  tb->note(msg)
 
-diag(msg): tb->diag(msg)
+defn diag(msg):
+  tb->diag(msg)
 
-ok(*args): apply(call-tb, 'ok, args)
+defn ok(*args):
+  apply(call-tb, 'ok, args)
 
-is(*args): apply(call-tb, 'is_eq args)
+defn is(*args):
+  apply(call-tb, 'is_eq args)
 
-isnt(*args): apply(call-tb, 'isnt_eq, args)
+defn isnt(*args):
+  apply(call-tb, 'isnt_eq, args)
 
-like(*args): apply(call-tb, 'like, args)
+defn like(*args):
+  apply(call-tb, 'like, args)
 
-unlike(*args): apply(call-tb, 'unlike, args)
+defn unlike(*args):
+  apply(call-tb, 'unlike, args)
 
-done-testing(*args): apply(call-tb, 'done_testing, args)
+defn done-testing(*args):
+  apply(call-tb, 'done_testing, args)
 
-skip-all(label): tb->skip_all(label)
+defn skip-all(label):
+  tb->skip_all(label)
 
 # Macros:
-todo((label, *tests)): \`tb->todo_skip(~label)
+defmacro todo(label, *tests):
+  .`tb->todo_skip(~label)
 
-skip((label, *tests)): \`tb->todo_skip(~label)
+defmacro skip(label, *tests):
+  .`tb->todo_skip(~label)
 
-subtest((label *tests)):
-  \`Dummy::Module->subtest(tb, ~label, '~tests)
+defmacro subtest(label *tests):
+  .`Dummy::Module->subtest(tb, ~label, '~tests)
 
 # XXX - Eval this Perl code until we can figure out a better Perl iterop
 # strategy for callbacks.
